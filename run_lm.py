@@ -21,7 +21,7 @@ def get_data(all_messages):
 
 def run_abstraction_hf(abstraction_type, model_name):
     '''
-    Temperature and top_p are defaults in llama 3 github repo
+    We follow default parameters demo'd in model cards on Hugging Face
     '''
     with open(os.path.join(LOGS, 'book_passages_augmented.json'), 'r') as infile: 
         book_passages = json.load(infile) # {book : {quote_id : text} }
