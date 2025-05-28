@@ -13,8 +13,7 @@ from tenacity import (
     wait_random_exponential,
 )  
 
-#LOGS = '/data/lucy/literary-theme-analysis/outputs/' # tahoe
-LOGS = '/mnt/data0/lucy/literary-theme-analysis/outputs/' # sequoia
+LOGS = '/path/to/your/stuff/' # TODO: edit this
 
 def get_data(all_messages):
     for i in range(len(all_messages)): 
@@ -26,7 +25,8 @@ def run_abstraction_hf(abstraction_type, model_name):
     '''
     with open(os.path.join(LOGS, 'book_passages_augmented.json'), 'r') as infile: 
         book_passages = json.load(infile) # {book : {quote_id : text} }
-    
+
+    # TODO: edit this so the file paths point to the models you want to use and where your models live 
     if model_name == 'Llama-3.1-70B': 
         model_id = "/data/models/llama3.1/models--meta-llama--Meta-Llama-3.1-70B-Instruct/snapshots/945c8663693130f8be2ee66210e062158b2a9693"
         model_kwargs = {"torch_dtype": torch.bfloat16}
@@ -48,11 +48,6 @@ def run_abstraction_hf(abstraction_type, model_name):
         model_kwargs=model_kwargs,
         device_map="auto",
     )
-
-    #terminators = [
-    #    pipeline.tokenizer.eos_token_id,
-    #    pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>")
-    #]
     
     outpath = os.path.join(LOGS, 'abstracted_passages_' + abstraction_type + '_' + model_name + '.json')
     
@@ -170,12 +165,14 @@ def run_abstraction_oa(abstraction_type, model_name):
             json.dump(abstracted_passages, outfile)
     
 if __name__ == '__main__':
+    '''
+    Here are examples of how you may call the above
+    '''
     run_abstraction_oa('describe', 'gpt-4o')
     
     #run_abstraction_hf('summarize', 'gemma-2-2b')
     #run_abstraction_hf('describe', 'gemma-2-2b')
     #run_abstraction_hf('paraphrase', 'gemma-2-2b')
-    
     #run_abstraction_oa('describe', 'gpt-4o-mini')
     #run_abstraction_oa('paraphrase', 'gpt-4o-mini')
     #run_abstraction_hf('summarize', 'Llama-3.1-8B')
