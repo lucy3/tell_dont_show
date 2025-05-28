@@ -10,16 +10,21 @@ Conventional bag-of-words approaches for topic modeling, like latent Dirichlet a
 
 ## Running our approach
 
-Since our approach is very simple, all you need is the following instruction prompt: 
+Our approach is more conceptual than technical. That is, topic modeling may work better once literary text has undergone some abstraction (clinking of silverware and glass at a table → dinner scene).
+
+All you need is to input the following prompt into a language model: 
 
 ```
-prompt="In one paragraph, " + abstraction_type + " the following book excerpt for a literary scholar analyzing narrative content. Do not include the book title or author’s name in your response; " + abstraction_type + " only the passage.\n\nPassage:\n" + passage + "\n"
-messages = [
-  {"role": "system", "content": "You are a helpful assistant; follow the instructions in the prompt."},
-  {"role": "user", "content": prompt},
-  ]   
+prompt = "In one paragraph, " + abstraction_type + " the following book excerpt for a literary scholar analyzing narrative content. Do not include the book title or author’s name in your response; " + abstraction_type + " only the passage.\n\nPassage:\n" + passage + "\n"
 ```
 
-Here, `abstraction_type` may be some instructive verb, e.g. "summarize", "describe", or "paraphrase". 
+Here, `abstraction_type` may be some instructive verb, e.g. "summarize" or "describe". We also use the system prompt `"You are a helpful assistant; follow the instructions in the prompt."`
 
-This repo also includes code for calling different language models, preprocessing text for LDA, and running Mallet. 
+Then, [download Mallet](https://github.com/mimno/Mallet/releases) and apply topic modeling on models' outputs. 
+
+This repo includes code for: 
+- calling different language models (`run_lm.py`)
+- preprocessing text, e.g. language models' retellings or the original passages, for LDA (`preprocess_text_for_lda.py`)
+- calling Mallet (`topic_modeling.sh` + `topic_modeling_helper.sh`)
+
+Note that in the paper we use a March 27, 2024 version of TopicGPT as our "TopicGPT-lite" baseline, with modified/simplified prompts so that "small" LMs can cooperate. 
