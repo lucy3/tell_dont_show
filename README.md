@@ -7,3 +7,19 @@ Conventional bag-of-words approaches for topic modeling, like latent Dirichlet a
 **Accepted to Findings of ACL 2025**
 
 **Paper link**: TBD
+
+## Running our approach
+
+Since our approach is very simple, all you need is the following instruction prompt: 
+
+```
+prompt="In one paragraph, " + abstraction_type + " the following book excerpt for a literary scholar analyzing narrative content. Do not include the book title or author’s name in your response; " + abstraction_type + " only the passage.\n\nPassage:\n" + passage + "\n"
+messages = [
+  {"role": "system", "content": "You are a helpful assistant; follow the instructions in the prompt."},
+  {"role": "user", "content": prompt},
+  ]   
+```
+
+Here, `abstraction_type` may be some instructive verb, e.g. "summarize", "describe", or "paraphrase". 
+
+This repo also includes code for calling different language models, preprocessing text for LDA, and running Mallet. 
