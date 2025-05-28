@@ -10,7 +10,7 @@ Conventional bag-of-words approaches for topic modeling, like latent Dirichlet a
 
 ## Running our approach
 
-Our approach is more conceptual than technical. That is, topic modeling may work better once literary text has undergone some abstraction (clinking of silverware and glass at a table → dinner scene).
+Our approach is more conceptual than technical. That is, we argue that classic bag-of-words topic modeling works better once literary text has undergone some abstraction (clinking of silverware and glass at a table → dinner scene).
 
 All you need is to input the following prompt into a language model: 
 
@@ -27,4 +27,4 @@ This repo includes code for:
 - preprocessing text, e.g. language models' retellings or the original passages, for LDA (`preprocess_text_for_lda.py`)
 - calling Mallet (`topic_modeling.sh` + `topic_modeling_helper.sh`)
 
-Note that in the paper we use a March 27, 2024 version of TopicGPT as our "TopicGPT-lite" baseline, with modified/simplified prompts so that "small" LMs can cooperate. 
+Note that in the paper we use a March 27, 2024 version of [TopicGPT](https://github.com/chtmp223/topicGPT) as our "TopicGPT-lite" baseline, with modified/simplified prompts so that "small" LMs can cooperate. 
