@@ -6,7 +6,7 @@ Conventional bag-of-words approaches for topic modeling, like latent Dirichlet a
 
 **Accepted to Findings of ACL 2025**
 
-**Paper link**: TBD
+**Paper link**: [PDF](https://lucy3.github.io/assets/tell_dont_show.pdf)
 
 ## Running our approach
 
