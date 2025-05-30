@@ -30,3 +30,7 @@ This repo includes code for:
 - calling Mallet (`topic_modeling.sh` + `topic_modeling_helper.sh`)
 
 Note that in the paper we use a March 27, 2024 version of [TopicGPT](https://github.com/chtmp223/topicGPT) as our "TopicGPT-lite" baseline, with modified/simplified prompts so that "small" LMs can cooperate. 
+
+## Evaluation data
+
+This is forthcoming -- we cannot release copyrighted passages from books, so we are going to revisit possibilities around this soon!
