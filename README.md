@@ -33,4 +33,19 @@ Note that in the paper we use a March 27, 2024 version of [TopicGPT](https://git
 
 ## Evaluation data
 
-This is forthcoming -- we cannot release copyrighted passages from books, so we are going to revisit possibilities around this soon!
+Our evaluation data consists of 11,666 gold-labeled passages and a same-sized sample of random passages, yielding 23,332 passages in total. The addition of random passages ensures that we have enough data to yield good topics with LDA-based approaches. The data we release has duplicate `(passage, gold topic label)` pairs removed to match our evaluation process. These duplicates arise from multiple scraped quote-theme pairs mapping onto the same passage-theme pair, since a passage may contain multiple or overlapping quotes. So, the number of *unique* passages within each theme are lower than the post-scraping counts reported in Table 7 of our paper's Appendix. 
+
+Some of the data we evaluated on are copyrighted, and we purchased and digitized them ourselves. Thus, `book_passages_with_labels.json` only includes minimal information that could support your reconstruction of our data: passage starts, ends, and length. Length counts the number of white-space delimited tokens in a passage, and it is an approximation, as a considerable segment of our books were OCR'd, so digitization error could slightly distort this value. "Tags" are the original labels scraped from online sources, while "themes" derive from our remapping of tags into broader themes. Our paper evaluates topic modeling using the latter labels. 
+
+```
+{ 
+    book_passage_id: 
+    {
+        passage_start: "",
+        passage_end: "", 
+        passage_len: "", 
+        tags: {'Sparknotes': [], 'Litcharts': [], 'Goodreads': []}, 
+        themes: {'Sparknotes': [], 'Litcharts': [], 'Goodreads': []}, 
+    }
+}
+```
